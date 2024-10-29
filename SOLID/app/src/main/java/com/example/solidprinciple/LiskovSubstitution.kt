@@ -1,11 +1,15 @@
 package com.example.solidprinciple
 
 /**
+ * https://www.youtube.com/playlist?app=desktop&list=PLK8IOvtbwVsuYW8KovGg9o6dlhspym8O_
  * Liskov substitution principle:
- * Derived class must be substitutable for their parent (base class).
+ * 1. Derived class must be substitutable for their parent (base class). 
  * If S is subtype of T then objects of type T can be replaced with objects of type S.
  *
- * It sam as real world(children are always replacing their parents)
+ * 2. Child should never narrow down the functionality of parent.
+ * i.e. Object of subclass should be able to access the all the methods and properties of the superclass.
+ *
+ * It is same as real world(children are always replacing their parents)
  */
 
 open class Vehicle {
@@ -23,7 +27,7 @@ class Car : Vehicle() {
 
 class Cycle : Vehicle() {
     override fun startEngine() {
-        throw EngineNotFoundException()
+        throw EngineNotFoundException() //Child is narrowing down the functionality of parent. 
     }
 }
 
