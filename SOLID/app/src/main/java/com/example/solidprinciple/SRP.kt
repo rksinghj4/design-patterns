@@ -1,5 +1,10 @@
 package com.example.solidprinciple
 
+/**
+ * https://proandroiddev.com/solid-design-principles-in-kotlin-79100c670df1
+ *
+ */
+
 //Single responsibility principle: A class should have only one reason to change.
 // It means it should have one and only one responsibility.
 

@@ -2,6 +2,7 @@ package com.example.solidprinciple
 
 /**
  * https://www.youtube.com/playlist?app=desktop&list=PLK8IOvtbwVsuYW8KovGg9o6dlhspym8O_
+ *
  * Liskov substitution principle:
  * 1. Derived class must be substitutable for their parent (base class). 
  * If S is subtype of T then objects of type T can be replaced with objects of type S.

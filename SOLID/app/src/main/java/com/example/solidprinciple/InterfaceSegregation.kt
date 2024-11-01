@@ -2,6 +2,9 @@ package com.example.solidprinciple
 
 /**
  * Interface Segregation: make fine grained interfaces that are client specific.
+ *
+ * Interface should have client specific functionality only
+ * so that client won't have to implement unnecessary functionality.
  */
 
 interface Shape {
@@ -16,7 +19,7 @@ class Rectangle: Shape {
     }
 
     override fun calculateVolume() : Double {
-        // Volume can't be calculated for 2D shape so unnecessarily we are overriding it.
+        // Volume can't be calculated for 2D shape. Client is unnecessarily overriding it.
         return 0.0
     }
 
@@ -36,8 +39,6 @@ class Cuboid : Shape {
 /**
  * Solution to above problem is interface segregation.
  */
-
-
 interface TwoDShape {//SRP, OCP
     fun calculateArea() : Double
 }
