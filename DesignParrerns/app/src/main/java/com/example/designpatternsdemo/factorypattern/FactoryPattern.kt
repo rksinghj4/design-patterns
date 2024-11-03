@@ -2,6 +2,11 @@ package com.example.designpatternsdemo.factorypattern
 
 /**
  * https://medium.com/@thecodebean/factory-design-pattern-implementation-in-java-bd16ebb012e2
+ *
+ * Factory Pattern is a creational design pattern that abstracts the process of object creation.
+ * It allows you to create objects without specifying their exact types,
+ * delegating the responsibility to subclasses or specialized factory classes.
+ * This abstraction promotes flexibility and code maintainability.
  */
 
 //Product interface
@@ -40,7 +45,7 @@ class Burger : Dish {
  * It enhances the code extensibility.
  */
 
-//Factory interface
+//Factory interface, here we have only one type of Factory interface i.e DishFactory
 interface DishFactory {
     fun createDish(): Dish
 }
@@ -60,6 +65,9 @@ class BurgerFactory : DishFactory {
 }
 
 private fun main() {
+    /**
+     * Here buyer can directly contact factory of required product.
+     */
     val pizzaFactory: DishFactory = PizzaFactory()
     val pizza = pizzaFactory.createDish()
     pizza.cook()
