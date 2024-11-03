@@ -38,7 +38,7 @@ class ChocoBarDecorator(iceCream: IceCream, private val decoratorName: String) :
     override fun cost(): Int = decoratedIceCream.cost() + 20//My topping  additional charges
 }
 
-class FreshButterDecorator(val iceCream: IceCream, private val decoratorName: String) :
+class FreshButterDecorator(iceCream: IceCream, private val decoratorName: String) :
     IceCreamDecorator(iceCream) {
     override fun getDescription(): String {
         return decoratedIceCream.getDescription() + " with $decoratorName" //My Topping name
@@ -51,12 +51,18 @@ private fun main() {
     //Ice cream 1
     val chocolateIceCream = ChocolatePlainIceCream("ChocolateBar plain")
     println("${chocolateIceCream.getDescription()} of cost = ${chocolateIceCream.cost()}")
+
     //Topping 1 on Ice cream 2
     val chocobarTopping = ChocoBarDecorator(chocolateIceCream, "Choco lava topping")
     println("${chocobarTopping.getDescription()} of cost = ${chocobarTopping.cost()}")
+
     //Topping 2 on Ice cream 2
     val freshButterTopping = FreshButterDecorator(chocobarTopping, "Fresh Butter")
     println("${freshButterTopping.getDescription()} of cost = ${freshButterTopping.cost()}")
+
+    //Topping 3 on Ice cream 2
+    val freshButterTopping3 = FreshButterDecorator(freshButterTopping, "Double Fresh Butter")
+    println("${freshButterTopping3.getDescription()} of cost = ${freshButterTopping3.cost()}")
 
     //Ice cream 2
     val butterScotchIceCream = ButterScotchPlainIceCream("Butter scotch plain")
@@ -65,6 +71,7 @@ private fun main() {
     //Topping 1 on Ice cream 2
     val chocobarTopping1 = ChocoBarDecorator(butterScotchIceCream, "Choco lava topping")
     println("${chocobarTopping1.getDescription()} of cost = ${chocobarTopping1.cost()}")
+
     //Topping 2 on Ice cream 2
     val freshButterTopping2 = FreshButterDecorator(chocobarTopping1, "Fresh Butter")
     println("${freshButterTopping2.getDescription()} of cost = ${freshButterTopping2.cost()}")
