@@ -7,6 +7,8 @@ package com.example.designpatternsdemo.factorypattern
  * It allows you to create objects without specifying their exact types,
  * delegating the responsibility to subclasses or specialized factory classes.
  * This abstraction promotes flexibility and code maintainability.
+ *
+ * https://www.youtube.com/watch?v=7g9S371qzwM&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=7
  */
 
 //Product interface

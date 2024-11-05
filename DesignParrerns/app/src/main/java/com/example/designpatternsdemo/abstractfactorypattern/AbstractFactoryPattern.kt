@@ -6,6 +6,8 @@ package com.example.designpatternsdemo.abstractfactorypattern
  * The Abstract Factory design pattern is a creational design pattern
  * that provides an interface for creating families of related or dependent objects
  * without specifying their concrete classes.
+ *
+ * https://www.youtube.com/watch?v=7g9S371qzwM&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=7
  */
 
 data class Phone(
