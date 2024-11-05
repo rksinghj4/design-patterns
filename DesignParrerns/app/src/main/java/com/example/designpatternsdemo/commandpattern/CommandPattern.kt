@@ -33,7 +33,7 @@ class TurnOffCommand(private val fan: Fan) : Command {
  *
  * To support each functionality of device we need a command to operate.
  */
-//Device/Receiver
+//Receiver as hardware device
 class Fan {
     fun switchOn() {
         println("Switching on fan")
@@ -64,9 +64,11 @@ class SwitchBoard(private var command: Command) {
     }
 }
 
+//main function will act as invoker/client for controller
 private fun main() {
+    //First create object of receiver
     val fan = Fan()
-    //Command know which device to operate.
+    //Command know which device/receiver to operate.
     val turnOnCommand = TurnOnCommand(fan)
     //Controller knows about the passed command and it will operate that.
     val switchBoard1 = SwitchBoard(turnOnCommand)
