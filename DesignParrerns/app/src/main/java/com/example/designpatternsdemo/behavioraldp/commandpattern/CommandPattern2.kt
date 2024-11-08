@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.commandpattern
+package com.example.designpatternsdemo.behavioraldp.commandpattern
 
 //Command interface
 interface CalCommand {

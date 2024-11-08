@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.strategydp
+package com.example.designpatternsdemo.behavioraldp.strategydp
 
 /**
  * https://www.geeksforgeeks.org/strategy-pattern-set-1/

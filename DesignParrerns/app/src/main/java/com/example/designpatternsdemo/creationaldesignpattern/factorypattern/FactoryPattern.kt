@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.factorypattern
+package com.example.designpatternsdemo.creationaldesignpattern.factorypattern
 
 /**
  * https://medium.com/@thecodebean/factory-design-pattern-implementation-in-java-bd16ebb012e2

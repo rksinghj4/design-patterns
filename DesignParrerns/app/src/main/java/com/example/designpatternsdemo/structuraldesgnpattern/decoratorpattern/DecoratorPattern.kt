@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.decoratorpattern
+package com.example.designpatternsdemo.structuraldesgnpattern.decoratorpattern
 
 /**
  * https://medium.com/@thecodebean/decorator-design-pattern-implementation-in-java-af632380e249

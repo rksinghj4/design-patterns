@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.observerpattern
+package com.example.designpatternsdemo.behavioraldp.observerpattern
 
 /**
  * Observer pattern is also known as Publisher-Subscriber pattern.

@@ -1,4 +1,4 @@
-package com.example.designpatternsdemo.commandpattern
+package com.example.designpatternsdemo.behavioraldp.commandpattern
 
 /**
  * Perform the command in order and undo in the reverse order.
