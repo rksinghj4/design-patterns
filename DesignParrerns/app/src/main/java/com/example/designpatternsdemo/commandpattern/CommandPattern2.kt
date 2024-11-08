@@ -8,7 +8,9 @@ interface CalCommand {
 }
 
 //Concrete Commands
-class AddCommand(private val calculator: CalculatorSoftware) : CalCommand {
+class AddCommand(
+    private val calculator: CalculatorSoftware//Receiver or device
+) : CalCommand {
     override fun execute(value: Int): Int = calculator.add(value)
     override fun undo(value: Int): Int = calculator.sub(value)
     override fun redo(value: Int): Int = calculator.add(value)
@@ -20,9 +22,9 @@ class ResultCommand(private val calculator: CalculatorSoftware) : CalCommand {
     override fun redo(value: Int): Int = calculator.result()
 }
 
-
 //Software as Receiver
 class CalculatorSoftware(private var currentValue: Int = 0) {
+    //Actual logic/functionality is inside receiver
     fun add(valueToAdd: Int): Int {
         currentValue += valueToAdd
         return currentValue
@@ -35,6 +37,8 @@ class CalculatorSoftware(private var currentValue: Int = 0) {
 
     fun result() = currentValue
 }
+
+
 //New functionality can be added to the receiver without altering the existing functionalities.
 //For new functionality we need to add new command.
 
@@ -55,7 +59,7 @@ class CalculatorKeyBoard(private var calCommand: CalCommand) {
 
     fun undoButton() {
         val top = undoStack.removeLastOrNull()
-        top?.first?.undo(top.second)
+        top?.first?.undo(top.second)//Controller is the command invoker
         top?.let {
             redoStack.addLast(top)
         }
@@ -72,6 +76,11 @@ class CalculatorKeyBoard(private var calCommand: CalCommand) {
     fun result() = calCommand.execute()
 }
 
+/**
+ * Client Uses the Command: The client creates the concrete command objects
+ * and associates them with the receiver.
+ * It then assigns commands to the invoker, which will call them when needed.
+ */
 private fun main() {
     //First create object of receiver
     val calculatorSoftware = CalculatorSoftware()

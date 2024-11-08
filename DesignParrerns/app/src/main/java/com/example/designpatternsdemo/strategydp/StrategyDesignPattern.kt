@@ -1,6 +1,8 @@
 package com.example.designpatternsdemo.strategydp
 
 /**
+ * https://www.geeksforgeeks.org/strategy-pattern-set-1/
+ *
  * To sort input data, we can have different strategy/algo
  * like Quick sort, merge sort, selection sort, bubble sort etc.
  *
@@ -27,7 +29,6 @@ class CouponDiscount : DiscountStrategy {
 /**
  * If tomorrow new discount strategy come up we will override giveDiscount method with
  * required implementation.
- *
  */
 
 class Cashback : DiscountStrategy {
@@ -36,6 +37,15 @@ class Cashback : DiscountStrategy {
     }
 }
 
+/**
+ * 1. Context
+ * The Context is a class or object that holds a reference to a strategy object and delegates the task to it.
+ *
+ * It acts as the interface between the client and the strategy,
+ * providing a unified way to execute the task without knowing the details of how it’s done.
+ * The Context maintains a reference to a strategy object and calls its methods to perform the task,
+ * allowing for interchangeable strategies to be used.
+ */
 class ApplyDiscount(private var discountStrategy: DiscountStrategy) {
     //DIP followed
     fun setStrategy(discountStrategy: DiscountStrategy) {
@@ -43,6 +53,8 @@ class ApplyDiscount(private var discountStrategy: DiscountStrategy) {
     }
 
     fun giveDiscount() {
+        //Delegates the task to respective strategy.
+        //Context class is unaware of how the task has been implemented inside concrete strategy
         discountStrategy.giveDiscount()
     }
 }

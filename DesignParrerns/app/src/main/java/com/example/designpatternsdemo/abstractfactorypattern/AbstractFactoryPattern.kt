@@ -167,6 +167,7 @@ class PhoneStore : AbstractMobileFactory {
             Brand.APPLE -> {
                 when (model) {
                     Model.IPHONE_13 -> {
+                        //Here object creation of factory is also abstract.
                         Iphone13Factory().createPhone()
                     }
 

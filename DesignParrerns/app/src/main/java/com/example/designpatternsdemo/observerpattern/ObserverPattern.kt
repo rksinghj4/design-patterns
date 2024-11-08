@@ -21,6 +21,12 @@ class PremiumUser : Observer {
     }
 }
 
+/**
+ * Note: Subjects are the objects that maintain and notify observers about changes in their state,
+ * while Observers are the entities that react to those changes.
+ */
+
+//Subject
 interface Channel {
     //Subject is Channel here
     fun registerObserver(observer: Observer)
@@ -30,9 +36,14 @@ interface Channel {
     fun addNewContent(content: AddContent)
 }
 
+//Concrete Subject
 class CodingChannel(private val name: String = "Coding chanel") : Channel {
     private val observerList = mutableListOf<Observer>()
 
+    /**
+     * The subject doesn’t need to know the specific classes of its observers, allowing for flexibility.
+     * Concrete observers are abstract to Subject
+     */
     override fun registerObserver(observer: Observer) {
         observerList.add(observer)
     }
@@ -47,7 +58,10 @@ class CodingChannel(private val name: String = "Coding chanel") : Channel {
         }
     }
 
+    //Whenever a new Content is added to Subject(i.e. CodingChannel), it's state is changed,
+    // which is observed by observer
     override fun addNewContent(content: AddContent) {
+        //Process the new content
         notifyObserver(msg = "${content.contentType} has arrived on $name")
     }
 }

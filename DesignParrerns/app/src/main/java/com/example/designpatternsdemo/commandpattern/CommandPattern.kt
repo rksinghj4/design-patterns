@@ -13,13 +13,17 @@ interface Command {
  */
 
 //Concrete Commands
-class TurnOnCommand(private val fan: Fan) : Command {
+class TurnOnCommand(
+    private val fan: Fan//Receiver/device
+) : Command {
     override fun execute() {
         fan.switchOn()
     }
 }
 
-class TurnOffCommand(private val fan: Fan) : Command {
+class TurnOffCommand(
+    private val fan: Fan//Device/receiver
+) : Command {
     override fun execute() {
         fan.switchOff()
     }
@@ -60,18 +64,20 @@ class SwitchBoard(private var command: Command) {
     }
 
     fun pressButton() {
-        command.execute()
+        command.execute() //Controller is the command invoker
     }
 }
 
-//main function will act as invoker/client for controller
+//main function will act as client for controller
 private fun main() {
     //First create object of receiver
     val fan = Fan()
     //Command know which device/receiver to operate.
     val turnOnCommand = TurnOnCommand(fan)
+
     //Controller knows about the passed command and it will operate that.
     val switchBoard1 = SwitchBoard(turnOnCommand)
+
     //Controller doesn't know what to do when button is pressed, but passed command knows.
     switchBoard1.pressButton()///button is pressed when controller has TurnOnCommand
 
