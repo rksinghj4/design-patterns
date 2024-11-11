@@ -1,7 +1,7 @@
 package com.example.designpatternsdemo.structuraldesgnpattern.facadepattern
 
 /**
- * When to use: To hide system complexity from the client.
+ * When to use Facade: To hide system complexity from the client.
  *It provides a simplified interface to a complex system, making it easier to use.
  */
 
@@ -53,6 +53,8 @@ class CollegeLibrary {
  * This class should offer simplified methods that wrap the interactions with the subsystems.
  *
  * Benefits: Expose only what is needed to client. Hide everything else.
+ * Admin has more permission then a student, so write appropriate facade for each client.
+ * A facade can use another facade.
  */
 class EmployeeFacade {
     private val employeeDao = CollegeLibrary.EmployeeDao()
@@ -77,7 +79,6 @@ class EmployeeFacade {
         employeeDao.deleteEmployee()
     }
 }
-
 
 //Client
 private fun main() {

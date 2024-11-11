@@ -10,7 +10,6 @@ class AmazonDao {
     )
 
     fun getProduct(prodId: Int): Product? = listOfProduct.firstOrNull { it.prodId == prodId }
-
 }
 
 class Payment {
@@ -31,6 +30,11 @@ class Notification {
     }
 }
 
+/**
+ * In Factory pattern object creation was encapsulated.
+ * In Facade, not only object creation but also method invocation is encapsulated.
+ */
+
 //Facade - a simplified interface to a complex system, making it easier to use.
 class OrderFacade {
     private val amazonDao = AmazonDao()
@@ -39,8 +43,9 @@ class OrderFacade {
     private val notification = Notification()
 
     //Facade is responsible for handling all the complexity behind the order placement.
+    //In Facade pattern method invocation is encapsulated.
+    //Sequence of method calls matters here, but client is free from all responsibilities.
     fun placeOrder(prodId: Int) {
-        //Sequence of method calls matters here, but client is free from all responsibilities.
         //Tomorrow if new step is introduce then just Facade will change but not the entire client code
         //Tomorrow if one method's return type is changed then just facade will changes
         // and convert the new return type to what client is already using.
@@ -60,4 +65,7 @@ class OrderFacade {
 private fun main() {
     val orderFacade = OrderFacade()
     orderFacade.placeOrder(2)
+
+    orderFacade.placeOrder(10)
 }
+
