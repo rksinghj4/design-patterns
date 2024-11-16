@@ -1,6 +1,7 @@
 package com.example.designpatternsdemo.structuraldesgnpattern.facadepattern
 
 /**
+ * https://www.geeksforgeeks.org/difference-between-the-facade-proxy-adapter-and-decorator-design-patterns/?ref=asr14
  * When to use Facade: To hide system complexity from the client.
  *It provides a simplified interface to a complex system, making it easier to use.
  */
