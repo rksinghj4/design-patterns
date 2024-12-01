@@ -8,6 +8,8 @@ package com.example.designpatternsdemo.creationaldesignpattern.factorypattern
  * delegating the responsibility to subclasses or specialized factory classes.
  * This abstraction promotes flexibility and code maintainability.
  *
+ * It separates the object creation logic from the code that uses the objects.
+ *
  * https://www.youtube.com/watch?v=7g9S371qzwM&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=7
  */
 
@@ -41,6 +43,8 @@ class Burger : Dish {
 //Here we can keeping adding more item in our menu
 
 /**
+ * The Factory Pattern adheres to the Open/Closed Principle by allowing new object types to be added
+ *
  * Factory pattern allows:
  * we can add new products to our menu and corresponding factories to create these objects, without
  * altering the existing code.

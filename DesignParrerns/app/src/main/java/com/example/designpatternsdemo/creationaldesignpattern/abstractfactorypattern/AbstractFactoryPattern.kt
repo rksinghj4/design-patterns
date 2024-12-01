@@ -30,14 +30,14 @@ abstract class MobilePhone {
 class IPhone13 : MobilePhone() {
     override lateinit var phone: Phone
     override fun buildPhone(): Phone {
-        println("Building OnePlus 13")
+        println("Building IPhone 13")
         phone = Phone(
             brand = "IPhone",
             model = "Iphone 13",
             phoneSize = "5.5",
             bodyType = "Metallic gary"
         )
-        println("OnePlus 13 is ready")
+        println("IPhone 13 is ready")
         return phone
     }
 }
@@ -46,14 +46,14 @@ class IPhone14 : MobilePhone() {
     override lateinit var phone: Phone
 
     override fun buildPhone(): Phone {
-        println("Building OnePlus 14")
+        println("Building IPhone 14")
         phone = Phone(
             brand = "Iphone",
             model = "Iphone 14",
             phoneSize = "6.0",
             bodyType = "Metallic White"
         )
-        println("OnePlus 14 is ready")
+        println("IPhone 14 is ready")
         return phone
     }
 }
@@ -222,3 +222,5 @@ private fun main() {
     val mobile2 = phoneStore.orderPhone(Brand.ONE_PLUS, Model.ONE_PLUS_12)
     println("Hand over to client: ${mobile2.getDescription()}")
 }
+
+
