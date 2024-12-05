@@ -1,2 +1,0 @@
-package com.example.designpatternsdemo.structuraldesgnpattern.structuralpattern
-
