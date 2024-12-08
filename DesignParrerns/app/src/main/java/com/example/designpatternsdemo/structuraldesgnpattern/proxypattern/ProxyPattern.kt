@@ -35,20 +35,20 @@ class WebService : Network() {
 //Proxy object implemented Subject interface
 class ProxyWebService : Network() {
     //private var webService: WebService = WebService()//It is not lazy loading
-    private lateinit var webService: WebService
+    private var webService = lazy { WebService() }//Lazy loading
 
     private val cache = HashMap<String, String>()
     override fun fetch(url: String): String {
-        if (!::webService.isInitialized) {
+        /*if (!::webService.isInitialized) {
             webService = WebService()//Lazy loading
-        }
+        }*/
         return if (url.isNotBlank() && isUrlBlocked(url = url)) {
             "$url is blocked"
         } else if (cache.contains(url)) {//Check if available in cache
             println("$url : ${cache[url]} data returning from cache")//Event logging
             cache[url].orEmpty()
         } else {//Use the real object to call the required method
-            cache[url] = webService.fetch(url)
+            cache[url] = webService.value.fetch(url)
             cache[url].orEmpty()
         }
     }

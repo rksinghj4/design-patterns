@@ -6,7 +6,7 @@ package com.example.designpatternsdemo.structuraldesgnpattern.bridgepattern
  */
 
 //Here we will show problem, which can be solved using Bridge pattern
-//Synonyms: cavalryman, patrolman, state trooper, highway patrol, constable, deputy detective,
+//Trooper Synonyms: cavalryman, patrolman, state trooper, highway patrol, constable, deputy detective,
 // marshal, military police officer, and policeman
 interface Trooper {
     fun move(x: Long, y: Long)
@@ -18,7 +18,7 @@ interface Trooper {
 
 open class StormTrooper : Trooper {
     override fun move(x: Long, y: Long) {
-        println("Move at normal speed 10km/hr")
+        println("Move at normal speed - 10km/hr")
     }
 
     override fun attackRebel(x: Long, y: Long) {
@@ -28,7 +28,7 @@ open class StormTrooper : Trooper {
 
 open class ShockTrooper : Trooper {
     override fun move(x: Long, y: Long) {
-        println("Move slower than normal speed i.e. 5km/hr")
+        println("Move slower than normal speed - 5km/hr")
     }
 
     override fun attackRebel(x: Long, y: Long) {
