@@ -10,6 +10,8 @@ const val REGULAR_SPEED: Meters = 2
 interface Trooper2 {
     fun move(x: Long, y: Long)
     fun attackRebel(x: Long, y: Long)
+
+    fun displayDetails()
 }
 
 //Implementation is separated from abstraction, now both can grow independently
@@ -25,8 +27,11 @@ data class StormTrooper2(
     override fun attackRebel(x: Long, y: Long) {
         weapon.attack(x, y)
     }
-}
 
+    override fun displayDetails() {
+        println(this)
+    }
+}
 
 
 // Now we can provide any implementation to Weapon and Vehicle
@@ -53,6 +58,11 @@ class Bicycle : Vehicle {
 class Bike : Vehicle {
     override fun move(x: Long, y: Long): Meters = REGULAR_SPEED * 4
 }
+
+//Note:If classes don't have to preserve any state variables.
+// We can reduce above classes by having Singleton and for each class method
+// we can have one method in Singleton.
+
 
 private fun main() {
     //Now on the fly we can pass any implementation of Weapon and vehicle

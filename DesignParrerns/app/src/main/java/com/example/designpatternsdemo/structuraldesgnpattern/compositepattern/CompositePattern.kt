@@ -22,7 +22,9 @@ import com.example.designpatternsdemo.structuraldesgnpattern.bridgepattern.Troop
 
 //If we add new method to Trooper2 interface then Squad class will force us to override that method
 //Now squad is easily scalable and flexible.
-class Squad(private val units: List<Trooper2>) : Trooper2 {
+data class Squad(private val units: List<Trooper2>, private var index: Int = 0) : Trooper2 {
+
+
     constructor(vararg units: Trooper2) : this(units.toList())
 
     override fun move(x: Long, y: Long) {
@@ -37,6 +39,39 @@ class Squad(private val units: List<Trooper2>) : Trooper2 {
         units.forEach {
             it.attackRebel(x, y)
         }
+    }
+
+    override fun displayDetails() {
+        val iterator: Iterator<Trooper2?> = iterator()
+        while (iterator.hasNext()) {
+            /*
+            when (val item = iterator.next()) {
+                is Squad -> item.printElements(item.iterator())// is Composite object
+                is StormTrooper2 -> println(item) // is Leaf object
+            }
+             */
+            val item = iterator.next() as? Trooper2
+            item?.displayDetails()
+        }
+    }
+
+    //Here anonymous class is implementing kotlin's Iterator
+    operator fun iterator() = object : Iterator<Trooper2?> {
+        //Using Kotlin's Iterator interface
+        override fun hasNext(): Boolean {
+            return index < units.size
+        }
+
+        override fun next(): Trooper2? {
+            if (hasNext()) {
+                return units[index++]
+            }
+            return null
+        }
+    }
+
+    fun<T> printElements(iterator: Iterator<T>? = null) {
+
     }
 }
 

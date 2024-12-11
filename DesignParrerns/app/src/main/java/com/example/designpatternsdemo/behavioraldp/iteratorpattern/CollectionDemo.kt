@@ -3,6 +3,11 @@ package com.example.designpatternsdemo.behavioraldp.iteratorpattern
 import java.util.PriorityQueue
 import java.util.TreeSet
 
+/**
+ * Iterator pattern - it flattens our complex data structure into a simple sequence of elements.
+ * the order of the elements and what element to ignore is for iterator to decide.
+ *
+ */
 class LinkedHashSetDemo {
     private val collection = lazy { LinkedHashSet<Int>(20, .8F) }.value
     fun add(item: Int) {
@@ -71,7 +76,6 @@ class ArrayQueueDemo {
         println()
     }
 }
-
 
 
 private fun main() {
