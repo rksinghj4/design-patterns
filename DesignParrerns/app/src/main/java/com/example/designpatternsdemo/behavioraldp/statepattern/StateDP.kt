@@ -17,6 +17,7 @@ interface WhatCanHappened {
 
 //State
 sealed interface Mood {
+    //executes the behavior associated with that state
     fun actAsPerTheMood()
 }
 
@@ -40,6 +41,7 @@ data object Retreating : Mood {
 }
 
 data object Dead : Mood {
+    // executes the behavior associated with that state
     override fun actAsPerTheMood() {
         println("Snail is dead")
     }
@@ -56,7 +58,8 @@ class Snail : WhatCanHappened {
         action()
     }
 
-    override fun seeHero() {
+    //Based on WhatCanHappened interface state management is happening inside context
+    override fun seeHero() {//Changing the state
         mood = when (mood) {
             is Still -> Aggressive
             else -> mood
@@ -66,20 +69,23 @@ class Snail : WhatCanHappened {
     override fun getHit(pointOfDamage: Int) {
         healthPoint -= pointOfDamage
         mood = when {
-            (healthPoint <= 0) -> Dead
-            mood is Aggressive -> Retreating
+            (healthPoint <= 0) -> Dead//Smooth state transitions
+            mood is Aggressive -> Retreating//Smooth state transitions
             else -> mood
         }
     }
 
     override fun calmAgain() {
         mood = when (mood) {
-            !is Dead -> Still
+            !is Dead -> Still//Smooth state transitions
             else -> mood
         }
     }
 
-    fun action() {//Context object is delegating the request to appropriate State object
+    //Context object is delegating the action/request to appropriate State object
+    fun action() {
+        //Context class is unaware of how the task/behaviour has been implemented inside concrete State
+        //Current state object -  executes the behavior associated with that state
         mood.actAsPerTheMood()
     }
 }
