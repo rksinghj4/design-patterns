@@ -56,7 +56,7 @@ class CoinInsertedState(private val vendingMachine: VendingMachine/*Context obje
     }
 
     override fun dispense(aisleNumber: Int) {
-        throw IllegalStateException("No coin inserted state")
+        throw IllegalStateException("Product is not selected")
     }
 }
 
@@ -64,11 +64,11 @@ class CoinInsertedState(private val vendingMachine: VendingMachine/*Context obje
 class DispenseState(private val vendingMachine: VendingMachine) : VMState {
     //Override respective method with relevant implementation otherwise provide default implementation/throw exception
     override fun insertCoin(amount: Double) {
-        throw IllegalStateException("No coin inserted state")
+        throw IllegalStateException("You can't insertCoin in DispenseState")
     }
 
     override fun pressedButton(aisleNumber: Int) {
-        throw IllegalStateException("No coin inserted state")
+        throw IllegalStateException("You can't pressedButton in DispenseState")
     }
 
     override fun dispense(aisleNumber: Int) {
