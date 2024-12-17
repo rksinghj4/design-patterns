@@ -16,7 +16,7 @@ data object Pause : Mode {
     }
 }
 
-data object Stop : Mode {
+data object Stop : Mode {//We make data object when we have no state to preserve.
     override fun actAsPerTheMode() {
         println("Stop the running file")
     }
