@@ -29,7 +29,10 @@ class NoCoinInsertedState(private val vendingMachine: VendingMachine) : VMState 
     }
 }
 
-class CoinInsertedState(private val vendingMachine: VendingMachine) : VMState {
+/**
+ * State object has Context object
+ */
+class CoinInsertedState(private val vendingMachine: VendingMachine/*Context object*/) : VMState {
     override fun insertCoin(amount: Double) {
         println("Coin inserted: $amount")
         vendingMachine.setNewAmount(vendingMachine.amount + amount)
@@ -59,6 +62,7 @@ class CoinInsertedState(private val vendingMachine: VendingMachine) : VMState {
 
 
 class DispenseState(private val vendingMachine: VendingMachine) : VMState {
+    //Override respective method with relevant implementation otherwise provide default implementation/throw exception
     override fun insertCoin(amount: Double) {
         throw IllegalStateException("No coin inserted state")
     }
@@ -91,10 +95,12 @@ object States {
     val dispenseState = lazy { DispenseState(vendingMachine) }.value
 }
 
+//Context - An object whose behaviour changes based on the internal state change
 class VendingMachine(
     var amount: Double = 0.0,
-    internal var inventory: Inventory = Inventory(States.AISLE_COUNT)
+    private var inventory: Inventory = Inventory(States.AISLE_COUNT)
 ) {
+    //Context has State as member object and concrete States have Context object
     private var currentState: VMState = NoCoinInsertedState(this)
 
     fun setNewAmount(amount: Double) {
@@ -111,6 +117,7 @@ class VendingMachine(
         return expectedPrice <= amount
     }
 
+    //Context object is delegating the action/request to appropriate State object
     fun insertCoin(amount: Double) {
         //Runtime polymorphism is happening
         currentState.insertCoin(amount)
@@ -135,8 +142,8 @@ data class Product(val id: Int, val name: String, val price: Double)
 class Inventory(
     var aisleCount: Int,
     private val aisleToProductMap: MutableMap<Int, Product> = mutableMapOf(),
-    val productIdToCountMap: MutableMap<Int, Int> = mutableMapOf(),
-    val availableAisle: ArrayDeque<Int> = ArrayDeque()
+    private val productIdToCountMap: MutableMap<Int, Int> = mutableMapOf(),
+    private val availableAisle: ArrayDeque<Int> = ArrayDeque()
 ) {
     init {
         (1..aisleCount).forEach {
@@ -174,6 +181,7 @@ class Inventory(
     }
 }
 
+//Client
 private fun main() {
     val coldDrink = Product(1, "Pepsi", 20.0)
     val biscuits = Product(2, "Biscuit", 10.0)
