@@ -119,6 +119,6 @@ fun main(args: Array<String>) {
 
 
 /**
- * It still have interface segeration problem
+ * It still have interface segregation problem
  */
 
