@@ -46,7 +46,7 @@ class Cashback : DiscountStrategy {
  * The Context maintains a reference to a strategy object and calls its methods to perform the task,
  * allowing for interchangeable strategies to be used.
  */
-class ApplyDiscount(private var discountStrategy: DiscountStrategy) {
+class ApplyDiscount(private var discountStrategy: DiscountStrategy) {//Composition of changing behaviour
     //DIP followed
     fun setStrategy(discountStrategy: DiscountStrategy) {
         this.discountStrategy = discountStrategy

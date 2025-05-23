@@ -11,6 +11,9 @@ package com.example.designpatternsdemo.creationaldesignpattern.factorypattern
  * It separates the object creation logic from the code that uses the objects.
  *
  * https://www.youtube.com/watch?v=7g9S371qzwM&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=7
+ *
+ * Factory Pattern: Intent is object creation.
+ * Strategy Pattern: Intent is  change of Algo/Strategy at run time.
  */
 
 //Product interface
@@ -53,21 +56,21 @@ class Burger : Dish {
 
 //Factory interface, here we have only one type of Factory interface i.e DishFactory
 interface DishFactory {
-    fun createDish(): Dish
+    fun createDish(): Dish//1 method only.
 }
 
-class PizzaFactory : DishFactory {
-    //Object creation is abstract inside the corresponding Factory
-    override fun createDish() = Pizza()
+class PizzaFactory : DishFactory {//Concrete Factory 1
+    //Object creation is abstract inside the corresponding Factory.
+    override fun createDish() = Pizza()//1 method only to crate 1 product/item.
 }
 
-class BurgerFactory : DishFactory {
+class BurgerFactory : DishFactory {//Concrete Factory 2
     /**
      * The Factory Pattern encapsulates object creation logic,
      * ensuring it remains hidden from client code.
      * This promotes cleaner and more maintainable code.
      */
-    override fun createDish(): Dish = Burger()
+    override fun createDish(): Dish = Burger()//1 method only to crate 1 product/item.
 }
 
 private fun main() {
