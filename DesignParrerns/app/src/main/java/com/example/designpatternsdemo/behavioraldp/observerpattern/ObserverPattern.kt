@@ -6,10 +6,12 @@ package com.example.designpatternsdemo.behavioraldp.observerpattern
  */
 
 interface Observer {
+    //It could be some Custom object as parameter in update method
     fun update(msg: String)
 }
 
 class BasicUser : Observer {
+    //It could be some Custom object as parameter in update method
     override fun update(msg: String) {
         println("Basic user: $msg received")
     }
@@ -26,7 +28,7 @@ class PremiumUser : Observer {
  * while Observers are the entities that react to those changes.
  */
 
-//Subject
+//Subject/Observable interface
 interface Channel {
     //Subject is Channel here
     fun registerObserver(observer: Observer)
@@ -36,7 +38,7 @@ interface Channel {
     fun addNewContent(content: AddContent)
 }
 
-//Concrete Subject
+//Concrete Subject/Observable
 class CodingChannel(private val name: String = "Coding chanel") : Channel {
     private val observerList = mutableListOf<Observer>()
 

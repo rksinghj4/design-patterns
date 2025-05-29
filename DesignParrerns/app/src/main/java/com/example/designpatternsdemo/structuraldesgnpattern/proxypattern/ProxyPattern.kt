@@ -1,5 +1,7 @@
 package com.example.designpatternsdemo.structuraldesgnpattern.proxypattern
 
+import androidx.collection.ArrayMap
+
 /**
  * Proxy pattern: A structural design pattern
  * A client and real objects are connected through the proxy object.
@@ -21,7 +23,8 @@ abstract class Network {
 
 //Real object implemented Subject interface
 class WebService : Network() {
-    private val server = HashMap<String, String>()
+
+    private val server = ArrayMap<String, String>()
 
     init {
         server["aa.com"] = "aa"

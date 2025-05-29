@@ -1,7 +1,7 @@
 package com.example.designpatternsdemo.creationaldesignpattern.factorypattern;
 
 
-
+//Simple Factory: is not exactly a design pattern.
 // --- Burger Interface ---
 interface BurgerI {
     void prepare();
