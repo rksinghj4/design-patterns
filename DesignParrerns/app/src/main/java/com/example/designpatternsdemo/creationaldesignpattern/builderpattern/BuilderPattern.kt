@@ -3,6 +3,7 @@ package com.example.designpatternsdemo.creationaldesignpattern.builderpattern
 /**
  * The Product is the complex object that the Builder pattern is responsible for constructing.
  *
+ * In Kotlin - we have default values for properties within a data class and apply scope function
  */
 //1. Product
 data class PersonalComputer(

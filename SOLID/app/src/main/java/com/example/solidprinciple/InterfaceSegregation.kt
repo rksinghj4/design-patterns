@@ -16,6 +16,7 @@ class Rectangle: Shape {
 
     override fun calculateArea() : Double {
         TODO("Not yet implemented")
+        return 0.0
     }
 
     override fun calculateVolume() : Double {
@@ -28,10 +29,12 @@ class Rectangle: Shape {
 class Cuboid : Shape {
     override fun calculateArea(): Double {
         TODO("Not yet implemented")
+        return 0.0
     }
 
     override fun calculateVolume(): Double {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return 0.0
     }
 
 }
@@ -49,16 +52,19 @@ interface ThreeDShape {//SRP, OCP
 
 class RectangleSolution: TwoDShape {
     override fun calculateArea(): Double {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return 0.0
     }
 }
 
 class CuboidSolution : TwoDShape, ThreeDShape {
     override fun calculateArea(): Double {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return 0.0
     }
 
     override fun calculateVolume(): Double {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return 0.0
     }
 }

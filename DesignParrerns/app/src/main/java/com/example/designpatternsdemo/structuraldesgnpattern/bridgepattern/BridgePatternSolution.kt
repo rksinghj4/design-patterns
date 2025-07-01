@@ -17,8 +17,8 @@ interface Trooper2 {
 //Implementation is separated from abstraction, now both can grow independently
 
 data class StormTrooper2(
-    private val weapon: Weapon,
-    private val vehicle: Vehicle
+    private val weapon: Weapon,//Implementation is injected
+    private val vehicle: Vehicle//Implementation is injected
 ) : Trooper2 {
     override fun move(x: Long, y: Long) {
         vehicle.move(x, y)

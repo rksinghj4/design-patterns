@@ -22,7 +22,7 @@ class MyDirectory(private val dirName: String) : FileSystem {
     }
 
     override fun ls() {
-        println("File name: $dirName")
+        println("Dir name: $dirName")
         directories.forEach {
             /*
             if (it is Directory) {

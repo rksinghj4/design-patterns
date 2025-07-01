@@ -8,15 +8,16 @@ import com.example.designpatternsdemo.structuraldesgnpattern.bridgepattern.Storm
 import com.example.designpatternsdemo.structuraldesgnpattern.bridgepattern.Trooper2
 
 /**
- * Composite patterns empowers us to support a tree-like structure of diverse complexity,
- * allowing us to execute operations on all nodes with in tree.
+ * The Composite Pattern lets you treat individual objects and groups of objects in the same way.
  *
- * Whenever we encountered a problem in tree like structure mostly
+ * It's commonly used when you have a tree structure — like a file system, UI layout, or organization hierarchy.
+ *
+ * Whenever we encountered a problem in tree like structure(Inheritance) mostly
  * it can be solved using composite pattern.
  *
- * Composite pattern help us to treat the individual object in the same way as the collection of
- * those individual objects.
- *
+ * Component (interface)
+ *  ├── Leaf (single item)
+ *  └── Composite (group of components)
  *
  */
 

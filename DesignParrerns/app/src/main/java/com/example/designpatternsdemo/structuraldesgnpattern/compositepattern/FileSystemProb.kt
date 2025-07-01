@@ -14,7 +14,7 @@ class Directory(private val dirName: String) {
     }
 
     fun ls() {
-        println("File name: $dirName")
+        println("Dir name: $dirName")
         directories.forEach {
 
             if (it is Directory) {
@@ -40,7 +40,7 @@ private fun main() {
 
     val bollywoodDir = Directory(dirName = "Bollywood")
     bollywoodDir.add(File(fileName = "Pushpa"))
-    bollywoodDir.add(File(fileName = "Viyapath"))
+    bollywoodDir.add(File(fileName = "Vijaya path"))
 
     moviesDir.add(hollywoodDir)
     moviesDir.add(bollywoodDir)

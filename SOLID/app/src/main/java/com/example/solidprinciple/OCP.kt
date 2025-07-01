@@ -39,3 +39,26 @@ class SubOperation : Operation {
     override fun calculate(a: Double, b: Double) = a - b
 }
 
+class Calculator(private var operation: Operation) {//Composition
+
+    fun setOperation(operation: Operation) {
+        this.operation = operation
+    }
+
+    inline fun <reified T> getType(): Class<T> {
+        return T::class.java
+    }
+
+    fun calculate(a: Double, b: Double) = operation.calculate(a, b)
+}
+
+private fun main() {
+    val calculator = Calculator(AddOperation())
+    val result1 = calculator.calculate(4.0, 2.0)
+    println("${calculator.getType<AddOperation>()} Result = $result1")
+    calculator.setOperation(SubOperation())
+    val result2  = calculator.calculate(4.0, 2.0)
+    println("${calculator.getType<SubOperation>()} Result = $result2")
+
+}
+

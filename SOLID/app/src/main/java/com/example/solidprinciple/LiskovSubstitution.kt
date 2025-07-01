@@ -10,6 +10,12 @@ package com.example.solidprinciple
  * 2. Child should never narrow down the functionality of parent.
  * i.e. Object of subclass should be able to access the all the methods and properties of the superclass.
  *
+ * 3. Method signature rule
+ * (overridden method can return subtype of what parent method is returning)
+ * (overridden method can accept supertype of what parent method is accepting as parameter)
+ *
+ * 4. Exception Rule: overridden method can throw subtype of what parent method is throwing
+ *
  * It is same as real world(children are always replacing their parents)
  */
 
