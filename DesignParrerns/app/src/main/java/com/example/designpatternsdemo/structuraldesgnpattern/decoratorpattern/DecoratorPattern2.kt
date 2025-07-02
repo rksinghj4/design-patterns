@@ -29,7 +29,7 @@ class ButterScotchPlainIceCream2(override val desc: String = "Butter Scotch") : 
  * Decorator/topping flavours is also extending same base class as concrete ice cream classes.
  */
 
-
+//Note: Decorator has 'is-a' and 'has-a' both relationship with Product abstract class/ interface
 class ChocoBarDecorator2(private val decoratedIceCream: IceCream2, private val decoratorName: String) :
      IceCream2 by decoratedIceCream {
          //We can skip any unnecessary implementation of interface methods, because implementation of

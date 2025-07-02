@@ -46,7 +46,8 @@ class Cashback : DiscountStrategy {
  * The Context maintains a reference to a strategy object and calls its methods to perform the task,
  * allowing for interchangeable strategies to be used.
  */
-class ApplyDiscount(private var discountStrategy: DiscountStrategy) {//Composition of changing behaviour
+class ApplyDiscount(private var discountStrategy: DiscountStrategy) {
+    //Composition of changing behaviour
     //DIP followed
     fun setStrategy(discountStrategy: DiscountStrategy) {
         this.discountStrategy = discountStrategy
@@ -57,6 +58,21 @@ class ApplyDiscount(private var discountStrategy: DiscountStrategy) {//Compositi
         //Context class is unaware of how the task has been implemented inside concrete strategy
         discountStrategy.giveDiscount()
     }
+}
+
+class ApplyDiscountUsingDeligation(var discountStrategy: DiscountStrategy) :
+    DiscountStrategy by discountStrategy {
+    //Composition of changing behaviour
+      /*  // DIP followed
+    fun setStrategy(discountStrategy: DiscountStrategy) {
+        this.discountStrategy = discountStrategy
+    }
+
+    fun giveDiscount() {
+        //Delegates the task to respective strategy.
+        //Context class is unaware of how the task has been implemented inside concrete strategy
+        discountStrategy.giveDiscount()
+    }*/
 }
 
 private fun main() {
@@ -73,4 +89,9 @@ private fun main() {
      */
     applyDiscount.setStrategy(Cashback())
     applyDiscount.giveDiscount()
+    println("_________________________________________")
+    val applyDiscountByDeligation = ApplyDiscountUsingDeligation(FlatDiscount())
+    applyDiscountByDeligation.giveDiscount()
+    applyDiscountByDeligation.discountStrategy = CouponDiscount() //doesn't change the strategy
+    applyDiscountByDeligation.giveDiscount()
 }
