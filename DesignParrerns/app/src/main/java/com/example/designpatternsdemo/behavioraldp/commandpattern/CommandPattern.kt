@@ -1,6 +1,16 @@
 package com.example.designpatternsdemo.behavioraldp.commandpattern
 
 /**
+ * The Command Pattern encapsulates an action/request as an object, decoupling the sender (Invoker)
+ * from the receiver, making it easy to parameterize actions, queue them,
+ * or implement undo/redo functionality.
+ *
+ * Encapsulate a request as an object by binding together a set of actions on a specific receiver.
+ * It decouples the sender of a request (Invoker) from the receiver of the request (Receiver),
+ * which is the object that performs the actual operation.
+ *
+ * This pattern is useful in scenarios where you want to parameterize objects with operations,
+ * queue operations, log operations, or support undoable operations.
  * Perform the command in order and undo in the reverse order.
  */
 
@@ -12,7 +22,7 @@ interface Command {
  * Concrete Command knows about the device and override the execute method according to
  */
 
-//Concrete Commands
+//Concrete Commands: Each command is responsible for a specific action of the device.
 class TurnOnCommand(
     private val fan: Fan//Receiver/device
 ) : Command {
@@ -57,7 +67,7 @@ class Fan {
  * Controller knows about the command
  */
 
-//Controller
+//Controller/Invoker
 class SwitchBoard(private var command: Command) {
     fun setCommand(command: Command) {
         this.command = command

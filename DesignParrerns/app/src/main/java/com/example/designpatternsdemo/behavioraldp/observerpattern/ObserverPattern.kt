@@ -1,5 +1,9 @@
 package com.example.designpatternsdemo.behavioraldp.observerpattern
 
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
+
 /**
  * Observer pattern is also known as Publisher-Subscriber pattern.
  *
@@ -135,4 +139,5 @@ private fun main() {
     designPatternChannel.unregisterObserver(basicUser1)
 
     designPatternChannel.addNewContent(AddDocument())//No subscriber, so no one get updates
+
 }

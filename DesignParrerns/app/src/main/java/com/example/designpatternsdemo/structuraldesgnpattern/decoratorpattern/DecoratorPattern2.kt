@@ -2,6 +2,8 @@ package com.example.designpatternsdemo.structuraldesgnpattern.decoratorpattern
 
 /**
  * https://medium.com/@thecodebean/decorator-design-pattern-implementation-in-java-af632380e249
+ * Decorator design pattern is a structural pattern that allows behavior/responsibility to be added to an
+ * individual object dynamically, without affecting the behavior of other objects from the same class.
  *
  * Example of decorator: Pizza, Ice cream
  */

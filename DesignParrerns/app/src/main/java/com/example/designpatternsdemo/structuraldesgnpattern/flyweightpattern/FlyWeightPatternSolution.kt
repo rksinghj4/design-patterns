@@ -71,9 +71,9 @@ object SpritesObj {
 }
 
 object RobotObj {
-    val batman = BatManRobot(RobotType.BATMAN.name, SpritesObj.batman)
-    val hulk = HulkRobot(RobotType.HULK.name, SpritesObj.hulk)
-    val superman = SuperManRobot(RobotType.SUPERMAN.name, SpritesObj.superman)
+    val batman = lazy { BatManRobot(RobotType.BATMAN.name, SpritesObj.batman) }.value
+    val hulk = lazy { HulkRobot(RobotType.HULK.name, SpritesObj.hulk) }.value
+    val superman = lazy { SuperManRobot(RobotType.SUPERMAN.name, SpritesObj.superman) }.value
 }
 
 class RobotFactory1 {

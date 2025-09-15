@@ -22,7 +22,7 @@ open class StormTrooper : Trooper {
     }
 
     override fun attackRebel(x: Long, y: Long) {
-        println("Missed most of the time")
+        println("Missed most of the time")//Hit ratio is low
     }
 }
 
@@ -32,7 +32,7 @@ open class ShockTrooper : Trooper {
     }
 
     override fun attackRebel(x: Long, y: Long) {
-        println("Hits sometimes")
+        println("Hits sometimes") //Hit ration is high
     }
 }
 

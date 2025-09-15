@@ -4,8 +4,8 @@ package com.example.solidprinciple
 //You should be able to extend a class behaviour, without modifying it.
 class Operations {
     fun calculate(a: Double, b: Double, operationType: OperationType) = when (operationType) {
-        OperationType.ADD -> a + b
-        OperationType.SUB -> a - b
+        OperationType.ADD -> a + b//implementation is changing
+        OperationType.SUB -> a - b//implementation is changing
     }
 }
 

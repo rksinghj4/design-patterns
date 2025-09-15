@@ -1,6 +1,7 @@
 package com.example.designpatternsdemo.structuraldesgnpattern.compositepattern
 
 //Composite design pattern: Object inside object
+//Composite pattern: Treats individual objects and group/compositions of objects uniformly.
 internal interface FileSystem {
     fun ls()
 }

@@ -5,6 +5,7 @@ interface Burger3 {
     void prepare();
 }
 
+//In English, maida is called all-purpose flour, refined flour, or white flour
 class BasicBurger3 implements Burger3 {
     public void prepare() {
         System.out.println("Preparing Basic Burger with bun, patty, and ketchup!");

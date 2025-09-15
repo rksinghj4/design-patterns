@@ -1,5 +1,14 @@
 package com.example.designpatternsdemo.behavioraldp.statepattern
 
+/**
+ * State DP: It is behavioural dp that allows an object to change its behavior
+ * when its internal state changes. This pattern is particularly useful when an object’s behavior
+ * depends on its state, and the state can change during the object’s lifecycle.
+ *
+ * This pattern focuses on managing state transitions and coordinating state-specific behaviors.
+ *
+ */
+
 sealed interface Mode {
     fun actAsPerTheMode()
 }
