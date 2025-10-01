@@ -12,6 +12,21 @@ class Singleton {
     }
 }
 
+
+class Singleton2{
+    var data: String = "Default"
+
+    @Volatile
+    private  var instance: Singleton2? = null
+
+    fun getSingleton(): Singleton2 {
+        return instance ?: synchronized(this) {
+            instance ?: Singleton2().also { instance = it }
+        }
+    }
+
+}
+
 object SingletonObject {
     var data: String = "Default"
 }

@@ -1,5 +1,11 @@
 package com.example.designpatternsdemo.behavioraldp.templatedp
 
+/**
+ * The Template Method design pattern is a behavioral design pattern
+ * that defines the skeleton of an algorithm in a base class, deferring some steps to subclasses.
+ * This pattern allows subclasses to redefine certain steps of an algorithm
+ * without changing the algorithm's overall structure.
+ */
 //Template - Template means Preset format
 abstract class PizzaOutletTemplate {
     //Each step/fun can be overridden by child

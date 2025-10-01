@@ -31,13 +31,13 @@ data object Stop : Mode {//We make data object when we have no state to preserve
     }
 }
 
-interface WhatCanHappenedInMediaPlay {
+interface WhatCanHappenedInMediaPlayer {
     fun play()
     fun stop()
     fun pause()
 }
 
-class MediaPlayer : WhatCanHappenedInMediaPlay {
+class MediaPlayer : WhatCanHappenedInMediaPlayer {
     private var mode: Mode = Stop
     override fun play() {
         mode = Play

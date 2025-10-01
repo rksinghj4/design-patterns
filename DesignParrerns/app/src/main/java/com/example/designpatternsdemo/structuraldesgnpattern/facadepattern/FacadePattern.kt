@@ -27,7 +27,7 @@ class CollegeLibrary {
             println("Department details are deleted")
         }
     }
-
+    //CRUD
     class EmployeeDao {
         fun insertEmployee() {
             println("Employee details are inserted")

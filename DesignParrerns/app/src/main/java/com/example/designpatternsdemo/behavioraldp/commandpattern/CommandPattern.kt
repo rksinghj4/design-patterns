@@ -65,10 +65,11 @@ class Fan {
 
 /**
  * Controller knows about the command
+ * The Command Pattern encapsulates an action/request as an object,
  */
 
 //Controller/Invoker
-class SwitchBoard(private var command: Command) {
+class SwitchBoard(private var command: Command) {//
     fun setCommand(command: Command) {
         this.command = command
     }

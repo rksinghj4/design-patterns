@@ -7,14 +7,25 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
+/**
+ * The Adapter design pattern is a structural design pattern that acts as a bridge,
+ * allowing incompatible interfaces of existing classes to work together without changing their source code.
+ * It acts as a wrapper or connector, converting the interface of a class (the "adaptee")
+ * into another interface (the "target") that a client expects. This pattern is often used
+ * to integrate legacy systems with new components
+ */
+
+
+//Target domain model
 data class Person(val name: String, val age: Int)
 
 //Target interface, which client understands
 interface DataInfo {
     suspend fun getData(): Person
 }
-
+//Adapter: The class that implements the target interface and wraps the adaptee.
 class PersonJsonTODataAdapter(private val personJSON: JSONInfo) : DataInfo {
+    //Here we are adapting JSONInfo to DataInfo
     override suspend fun getData(): Person {
         val personJsonObject = personJSON.fetchJson()
         return Person(

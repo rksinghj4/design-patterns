@@ -1,6 +1,15 @@
 package com.example.designpatternsdemo.behavioraldp.strategydp
 
 /**
+ * The Strategy pattern is a behavioral design pattern that defines a family of algorithms,
+ * encapsulates each algorithms into a separate class, and makes them interchangeable,
+ * allowing the algorithm to vary independently of the client that uses it.
+ *
+ * It provides flexibility by letting clients select and switch between different algorithms at runtime
+ * without altering existing code, enhancing code reusability, maintainability, and flexibility
+ */
+
+/**
  * https://www.geeksforgeeks.org/strategy-pattern-set-1/
  *
  * To sort input data, we can have different strategy/algo
@@ -16,12 +25,14 @@ interface DiscountStrategy {
 class FlatDiscount : DiscountStrategy {
     //SRP followed
     override fun giveDiscount() {
+        //Algorithm 1
         println("Flat discount")
     }
 }
 
 class CouponDiscount : DiscountStrategy {
     override fun giveDiscount() {
+        //Algorithm 2
         println("Coupon discount")
     }
 }
@@ -33,6 +44,7 @@ class CouponDiscount : DiscountStrategy {
 
 class Cashback : DiscountStrategy {
     override fun giveDiscount() {
+        //Algorithms 3
         println("Cashback discount")
     }
 }
