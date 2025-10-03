@@ -7,23 +7,23 @@ package com.example.designpatternsdemo.structuraldesgnpattern.flyweightpattern
 //Sprite - प्रेत
 //Sprite synonyms -  phantom, sprite, apparition, ghost, demon, fiend
 
-data class Sprites(
+data class RobotImage(
     val images: String = "Hulk.jpg"
 )
 
 class Robot(
     val type: String, //Intrinsic
-    val sprites: Sprites, //Intrinsic
+    val robotImage: RobotImage, //Intrinsic
     x: Int, //Extrinsic
     y: Int, //Extrinsic
 )
 
-class RobotFactory {
+class RobotImageFactory {
     companion object {
         fun create(robotType: RobotType) = when (robotType) {
-            RobotType.BATMAN -> Sprites("batman.jpg")
-            RobotType.HULK -> Sprites("hulk.jpg")
-            RobotType.SUPERMAN -> Sprites("superman.jpg")
+            RobotType.BATMAN -> RobotImage("batman.jpg")
+            RobotType.HULK -> RobotImage("hulk.jpg")
+            RobotType.SUPERMAN -> RobotImage("superman.jpg")
         }
     }
 }
@@ -43,10 +43,10 @@ private fun main() {
     val x = 0
     val y = 0
     (1..100).forEach {
-        val robot = Robot("hulk", RobotFactory.create(RobotType.HULK), x + it, y + it)
+        val robot = Robot("hulk", RobotImageFactory.create(RobotType.HULK), x + it, y + it)
     }
 
     (1..100).forEach {
-        val robot = Robot("hulk", RobotFactory.create(RobotType.BATMAN), x + it, y + it)
+        val robot = Robot("batman", RobotImageFactory.create(RobotType.BATMAN), x + it, y + it)
     }
 }

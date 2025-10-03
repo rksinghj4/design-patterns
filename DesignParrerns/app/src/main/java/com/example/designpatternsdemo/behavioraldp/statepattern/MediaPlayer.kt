@@ -37,8 +37,7 @@ interface WhatCanHappenedInMediaPlayer {
     fun pause()
 }
 
-class MediaPlayer : WhatCanHappenedInMediaPlayer {
-    private var mode: Mode = Stop
+class MediaPlayer(var mode: Mode = Stop) : WhatCanHappenedInMediaPlayer {
     override fun play() {
         mode = Play
     }

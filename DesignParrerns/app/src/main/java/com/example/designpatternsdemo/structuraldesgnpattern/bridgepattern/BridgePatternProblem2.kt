@@ -9,7 +9,7 @@ interface Army {
 
 class RoadPetrolArmy: Army {
     override fun move(x: Long, y: Long) {
-        println("RoadPetrolArmy moving to coordinates: ($x, $y) at walking speed 5km/hr")
+        println("Jeep : RoadPetrolArmy moving to coordinates: ($x, $y) at walking speed 5km/hr")
     }
     override fun attackEnemy(x: Long, y: Long) {
         println("RoadPetrolArmy attacking enemy at coordinates: ($x, $y) with a Batten")
@@ -18,7 +18,7 @@ class RoadPetrolArmy: Army {
 
 class IndianArmy: Army {
     override fun move(x: Long, y: Long) {
-        println("IndianArmy moving to coordinates: ($x, $y) at speed 20km/hr")
+        println("Truck : IndianArmy moving to coordinates: ($x, $y) at speed 20km/hr")
     }
     override fun attackEnemy(x: Long, y: Long) {
         println("IndianArmy attacking enemy at coordinates: ($x, $y) with a Gun")
@@ -27,7 +27,7 @@ class IndianArmy: Army {
 
 class IndianAirForce: Army {
     override fun move(x: Long, y: Long) {
-        println("IndianAirForce moving to coordinates: ($x, $y) at speed 2000km/hr")
+        println("FighterJet: IndianAirForce moving to coordinates: ($x, $y) at speed 2000km/hr")
     }
     override fun attackEnemy(x: Long, y: Long) {
         println("IndianAirForce attacking enemy at coordinates: ($x, $y) with a Missile")

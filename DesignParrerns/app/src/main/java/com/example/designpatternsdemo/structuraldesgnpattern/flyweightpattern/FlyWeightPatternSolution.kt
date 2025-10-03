@@ -33,7 +33,7 @@ interface RobotI {
 
 class BatManRobot(
     val type: String, //Intrinsic
-    val sprites: Sprites, //Intrinsic
+    val robotImage: RobotImage, //Intrinsic
     //x: Int, //removed Extrinsic
     //y: Int, //removed Extrinsic
 ) : RobotI {
@@ -44,7 +44,7 @@ class BatManRobot(
 
 class HulkRobot(
     val type: String, //Intrinsic
-    val sprites: Sprites, //Intrinsic
+    val robotImage: RobotImage, //Intrinsic
     //x: Int, //removed Extrinsic
     //y: Int, //removed Extrinsic
 ) : RobotI {
@@ -55,7 +55,7 @@ class HulkRobot(
 
 class SuperManRobot(
     val type: String, //Intrinsic
-    val sprites: Sprites, //Intrinsic - Remains same once defined one value of that kind
+    val robotImage: RobotImage, //Intrinsic - Remains same once defined one value of that kind
     //x: Int, //removed Extrinsic
     //y: Int, //removed Extrinsic
 ) : RobotI {
@@ -64,16 +64,55 @@ class SuperManRobot(
     }
 }
 
-object SpritesObj {
-    val batman = Sprites("batman.jpg")
-    val hulk = Sprites("hulk.jpg")
-    val superman = Sprites("superman.jpg")
+object SpritesObjEager {
+    val batman = RobotImage("batman.jpg")
+    val hulk = RobotImage("hulk.jpg")
+    val superman = RobotImage("superman.jpg")
 }
 
+/**
+ * What happens in Eager initialization?
+ *
+ * All three images are created immediately when SpritesObj is loaded into memory.
+ * No thread-safety overhead, direct initialization.
+ * Simpler, faster access later (no lazy-check overhead).
+ *
+ * When is this better?
+ * If images are small and cheap to load.
+ * If you always need all of them anyway.
+ * Reduces complexity—straightforward initialization.
+ *
+ *
+ * Thread Safety For SpritesObjEager
+ *
+ * Yes, it is thread safe in terms of initialization.
+ * You will never get partially initialized values (e.g., a null batman).
+ * Multiple threads accessing SpritesObj will wait until initialization is complete.
+ *
+ * ⚠️ Caveat
+ *
+ * Thread safety here only applies to initialization.
+ * If your RobotImage itself has mutable state that’s modified later, you need to handle synchronization inside RobotImage.
+ * But if RobotImage is immutable (just loads an image and doesn’t change state), then you’re 100% safe.
+ */
+
+object SpritesObj {
+    val batman = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { RobotImage("batman.jpg") }.value
+    val hulk = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { RobotImage("hulk.jpg") }.value
+    val superman = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { RobotImage("superman.jpg") }.value
+}
+
+/**
+ * Rule of Thumb
+ *
+ * Use lazy if: loading is heavy (large assets, network/database cost, expensive setup).
+ *
+ * Use direct init if: objects are lightweight and always required.
+ */
 object RobotObj {
-    val batman = lazy { BatManRobot(RobotType.BATMAN.name, SpritesObj.batman) }.value
-    val hulk = lazy { HulkRobot(RobotType.HULK.name, SpritesObj.hulk) }.value
-    val superman = lazy { SuperManRobot(RobotType.SUPERMAN.name, SpritesObj.superman) }.value
+    val batman = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { BatManRobot(RobotType.BATMAN.name, SpritesObj.batman) }.value
+    val hulk = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { HulkRobot(RobotType.HULK.name, SpritesObj.hulk) }.value
+    val superman = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { SuperManRobot(RobotType.SUPERMAN.name, SpritesObj.superman) }.value
 }
 
 class RobotFactory1 {
@@ -113,3 +152,4 @@ private fun main() {
         robot.display(x + it, y + it)
     }
 }
+
