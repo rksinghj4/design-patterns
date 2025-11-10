@@ -1,7 +1,7 @@
 package com.example.designpatternsdemo.creationaldesignpattern.singletondp;
 
 public class MySingleton {
-    private static volatile MySingleton instance;
+    private static volatile MySingleton instance = null;
     private MySingleton() {
         // private constructor to prevent instantiation
     }
